@@ -1,0 +1,4 @@
+**/.sass-cache
+builds/**/images/*
+package.json
+config.codekit
