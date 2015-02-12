@@ -154,6 +154,7 @@ header {
       border-bottom: 0.25em solid #48B2E8; }
 
 .search {
+  display: none;
   float: left;
   position: fixed;
   top: 0;
