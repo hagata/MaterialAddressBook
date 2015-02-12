@@ -36,12 +36,14 @@
  @mixin lift3{  //Lift object/element to level 3 (medium height)
  	transition:all .2s $ani-curve; 
 		transform: scaleX(1.04) scaleY(1.04);
+		-webkit-transform: scaleX(1.04) scaleY(1.04);
 		box-shadow:$shadow3;
  }
 
  @mixin lift5{  //Lift object/element to level 5 (the highest level!)
  	transition:all .2s $ani-curve; 
 		transform: scaleX(1.05) scaleY(1.05);
+		-webkit-transform: scaleX(1.05) scaleY(1.05);
 		box-shadow:$shadow5;
  }
 

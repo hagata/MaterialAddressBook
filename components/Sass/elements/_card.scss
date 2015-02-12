@@ -42,6 +42,8 @@
 		&:hover{
 			transform-origin: 50% 50%;
 			transform: scaleX(1.0125) scaleY(1.0125);
+			-webkit-transform: scaleX(1.0125) scaleY(1.0125);
+			-moz-transform: scaleX(1.0125) scaleY(1.0125);
 			opacity: .9; //with a white BG, this ass a light glow/ brighten effect
 		}
 		

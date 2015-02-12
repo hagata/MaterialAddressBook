@@ -119,6 +119,7 @@ header {
   .createButton:hover {
     transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
     transform: scaleX(1.04) scaleY(1.04);
+    -webkit-transform: scaleX(1.04) scaleY(1.04);
     box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 50px 0 rgba(0, 0, 0, 0.19); }
 
 .secondaryMenu {
@@ -212,6 +213,8 @@ header {
     .card img:hover {
       transform-origin: 50% 50%;
       transform: scaleX(1.0125) scaleY(1.0125);
+      -webkit-transform: scaleX(1.0125) scaleY(1.0125);
+      -moz-transform: scaleX(1.0125) scaleY(1.0125);
       opacity: .9; }
   .card .contactInfo {
     float: left;
@@ -259,6 +262,7 @@ header {
   .card.dev-first:hover {
     transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
     transform: scaleX(1.05) scaleY(1.05);
+    -webkit-transform: scaleX(1.05) scaleY(1.05);
     box-shadow: 0 13px 14px 0 rgba(0, 0, 0, 0.2), 0 15px 75px 0 rgba(0, 0, 0, 0.22); }
   .card.dev-first:hover > .contactDetails {
     display: block; }
