@@ -1,0 +1,23 @@
+header{
+	background:$dark-accent-color;
+	padding:1rem;
+	box-shadow:$shadow1;
+	margin-bottom:$baseline*10;
+	position: fixed;
+	top:0;
+	z-index:900;
+	width:100%;
+
+	@include headings{
+		color:$white;
+		margin: 0;
+		font-weight: 200;
+	}
+
+	.createButton{
+		@include svg-button($secondary-color,60px,26px,12.5px,13.5px);
+		//buttons are positioned absolutely
+		right: 1em;
+		top:10px
+	}
+}

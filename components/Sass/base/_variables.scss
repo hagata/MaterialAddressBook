@@ -1,8 +1,30 @@
 
 //fonts
-$base-font-size:1.1em;
+$base-font-size:1em;
 
 //colors
 
 
-//
+$primary-color:#48B2E8;
+$secondary-color:#448AFF;
+$dark-accent-color:#2A4550;
+$white:#fff;
+$dark-gray:#727272; 
+$light-gray:#B6B6B6;
+$background-color:$light-gray;
+$base-font-color:$dark-accent-color;
+
+
+//Effects
+$shadow1: 0px 2px 5px 0px rgba(0,0,0,0.26);
+
+//Breaks
+$medium-screen:769px;
+$large-screen:1024px;
+
+//grid
+$medium-container-width:700px;
+$large-container-width:1000px;
+$baseline:.5em;
+
+$gutter:3%;

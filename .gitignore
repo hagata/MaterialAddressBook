@@ -2,3 +2,4 @@
 builds/**/images/*
 package.json
 config.codekit
+readme.html

@@ -1,0 +1,37 @@
+form{
+
+	
+	label{
+		font-size: $base-font-size*.7;
+		display: inline-block;
+		float: left;
+		width: 100%;
+		color: $light-gray;
+		margin: $baseline*2 0 0;
+
+		::-webkit-input-placeholder {
+			opacity: .4;
+		}
+	}
+
+	input{
+		// height: $baseline*8;
+		// padding-top: $baseline*4;
+		padding:$baseline *.625;
+		border:0 none; //reset base styling
+		border-bottom:1px solid $dark-gray;
+		width: 100%;
+		color: $base-font-color;
+
+		&:focus{
+			transition:all .2s;
+			outline: none;
+			border-bottom: 2px solid $primary-color;
+			padding:0 0 ($baseline/2);
+			margin: ($baseline/2) 0 0;
+			font-size: $base-font-size*1.1;
+			font-weight: 300;
+
+		}
+	}
+}

@@ -1,0 +1,157 @@
+.card{
+	
+	float:left;
+	background:$white;
+	width:44%; 
+	margin-right:$gutter;
+	margin-left:$gutter;
+	margin-bottom: 3.2%;
+	box-shadow:$shadow1;
+	position:relative;
+	//make them clicky
+	cursor:pointer;
+
+//Media breaks
+
+
+	@media screen and (min-width:$medium-screen){
+		width:31.26%;
+		margin-left: 0;
+	}
+
+	@media screen and (min-width:$large-screen){
+		width:22.75%; 
+	}
+
+	
+	&:hover>.edit{
+		display: block;
+	}
+
+	.contactInfo{ //initial view
+		@include row;
+		background:$primary-color;
+		color: $white;
+		padding:$baseline .5rem;
+		
+		%leadfix{
+			margin:.2rem 0;
+			line-height: 22px;
+		}
+		h1{
+			@extend %leadfix;
+			font-size: rem(22px);
+			// font-weight: 200;
+			padding: 0;
+			text-transform: capitalize; //for those lazy punks who don't capilize on entry!
+		}
+		p{
+			@extend %leadfix;
+			padding-top:0;
+			font-weight: 200;
+			letter-spacing: .5px;
+		}
+
+	}
+
+}
+
+%overScreen{
+	// display: none;
+	//
+	float: left;
+	position: absolute;
+	background: white;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	padding:16px;
+	cursor:initial;
+
+	&:hover{
+		transition: all .25s;
+		opacity: 1;
+	}
+}
+ %iconsize{
+		width: $baseline*3;
+		vertical-align: middle;
+		margin-right: $baseline;	
+}
+
+
+//this shows a different example for the first block.
+.card.dev-first{
+	&:hover>.contactDetails{display:block};
+}
+.contactDetails{
+	@extend %overScreen;
+	// opacity:1;
+	background:$white;
+	// padding-top:$gutter;;
+	
+	h1{
+		font-size: 2rem;
+		color: darken($primary-color,10%);
+		font-weight: 200;
+		margin-top:0;
+	}
+
+	svg{
+		@extend %iconsize;
+	}
+
+	.info{
+		padding-bottom:1em;
+		@include default-border-bottom;		
+	}
+
+}
+
+.edit {
+	@extend %overScreen;
+	
+
+	.doneConfirmButton,
+	.cancelButton {
+		position:absolute;
+		bottom:-$baseline;
+		}
+	.doneConfirmButton{
+		right: 18px;
+		text-align: right;
+	}
+
+	.customImageUpload{
+		@include row;
+		margin-top: $baseline*2;
+		font-size: $base-font-size;
+		display: block;
+		cursor:pointer; //make it clicky
+		
+		svg{
+			fill:$dark-accent-color;
+			@extend %iconsize;
+		}
+
+		&:active{
+			color:lighten($base-font-color,15%);
+			svg{
+				fill:lighten($dark-accent-color,10%);
+			}
+		}
+	}
+}
+
+.editButton{
+	// $color, $size, $iconsize, $icon-top, $icon-left)
+
+	@include svg-button($secondary-color,40px,22px,7px,9.8px);
+	float:right;
+	position:absolute;
+	bottom: 0;
+	right: 0;
+
+}
+
+	

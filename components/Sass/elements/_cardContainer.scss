@@ -1,0 +1,36 @@
+.cardContainer{
+	@include container;
+	margin-top:$baseline*15;
+
+	div:nth-of-type(2){
+		@include last;
+		margin-right: 0;
+	}	
+	
+	@media screen and (max-width:390px){
+		.card{width:100%;}
+	}
+
+	@media screen and (min-width:$medium-screen){
+			div:nth-of-type(2){
+		@include last;
+		margin-right: $gutter;
+	}	
+		div:nth-of-type(3n+3){
+			@include last;
+			margin-right: 0;
+		}	
+		
+	}
+	@media screen and (min-width:$large-screen){
+		div:nth-of-type(3n+3){
+			@include last;
+			margin-right: $gutter; 
+		}	
+		div:nth-of-type(4n+4){
+			@include last;
+			margin-right: 0;
+		}	
+		
+	}
+}

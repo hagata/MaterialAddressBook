@@ -1,3 +1,11 @@
+@mixin clearfix{
+	&:after{
+		content:"";
+		display: table;
+		clear: both;
+	}
+}
+
 
 //quickly access all headings 
 @mixin headings{
@@ -6,3 +14,53 @@
 		@content
 	}
 }
+ 
+ @mixin last {
+ 	margin-right: 0;
+ 	&:after{
+ 		@include clearfix;
+ 	} 
+ }
+
+ @mixin size($size){ //makes a square
+	width:$size;
+	height:$size;
+ }
+
+
+ //quick styles
+ @mixin default-border-bottom{
+ 	border-bottom:1px solid $dark-gray;
+ }
+
+ //buttons
+
+
+ @mixin svg-button($color, $size, $iconsize, $icon-top, $icon-left){
+	@include size($size);
+	float:right;
+	margin:$gutter;
+	border-radius: 50%;
+	background:$secondary-color;
+	position:absolute;
+	
+	margin: 12px;
+	box-shadow:$shadow1;
+	z-index:999;
+
+	svg{
+		@include size($size/1.8);
+		display: inline-block;
+		vertical-align: middle;
+		fill:#fff;
+		position: absolute;
+		margin-left: $icon-left;
+		margin-top: $icon-top;
+
+	}
+
+	&:active{
+		background:darken($color,10%);
+		
+	}
+ }
