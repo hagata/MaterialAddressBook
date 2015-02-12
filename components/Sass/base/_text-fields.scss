@@ -24,7 +24,7 @@ form{
 		color: $base-font-color;
 
 		&:focus{
-			transition:all .2s;
+			transition:$base-transition;
 			outline: none;
 			border-bottom: 2px solid $primary-color;
 			padding:0 0 ($baseline/2);

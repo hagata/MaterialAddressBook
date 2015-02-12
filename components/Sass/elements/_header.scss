@@ -1,23 +1,80 @@
-header{
-	background:$dark-accent-color;
-	padding:1rem;
-	box-shadow:$shadow1;
-	margin-bottom:$baseline*10;
-	position: fixed;
-	top:0;
+%headerStack{
+	padding:$baseline;
 	z-index:900;
 	width:100%;
+}
+
+header{
+	@extend %headerStack;
+	background:$dark-accent-color;
+	position: fixed;
+	top:0;
+
 
 	@include headings{
 		color:$white;
-		margin: 0;
+		margin: $baseline 0;
 		font-weight: 200;
+		float: left;
+
 	}
 
-	.createButton{
-		@include svg-button($secondary-color,60px,26px,12.5px,13.5px);
-		//buttons are positioned absolutely
-		right: 1em;
-		top:10px;
+	.iconSection{
+		float: right;
+
+		svg{
+			width: $baseline *3;
+			margin-right: $baseline;
+			fill:$white;
+			cursor: pointer;
+
+		}
+		
+	}
+
+}
+
+.createButton{
+
+	transition: all .2s $ani-curve;
+	@include svg-button($secondary-color,60px,26px,12.5px,13.5px);
+	position:fixed;
+	right: 1em;
+	top:82px;
+
+	&:hover{
+		@include lift3;
+	}
+}
+
+.secondaryMenu{
+	@extend %headerStack;
+	background:rgba(255,255,255,.8);
+	position: fixed;
+	top: 4.2em;
+	padding:0;
+	box-shadow:$shadow1;
+
+
+}
+
+.filtermenu{
+	
+@include container;
+
+	span{
+		transition: border-bottom .1s $ani-curve;
+		float:left; //because inline-block makes the border bottom not continuous
+		padding-right:$baseline*2;
+		min-width: $baseline*4;
+		padding:$baseline*2;
+		text-align: center;
+		cursor: pointer;
+
+		&.currentFilter,
+		&:hover{
+			transition: border-bottom .1s $ani-curve;
+			border-bottom: $baseline/2 solid $primary-color;
+		}
 	}
 }

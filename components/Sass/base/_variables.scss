@@ -17,6 +17,10 @@ $base-font-color:$dark-accent-color;
 
 //Effects
 $shadow1: 0px 2px 5px 0px rgba(0,0,0,0.26);
+$shadow3: 0 9px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 50px 0 rgba(0, 0, 0, 0.19);
+$shadow5: 0 13px 14px 0 rgba(0, 0, 0, 0.2), 0 15px 75px 0 rgba(0, 0, 0, 0.22); //The highest raised amount
+$ani-curve:cubic-bezier(.06,.55,.9,.98);
+$base-transition:all .2s $ani-curve;
 
 //Breaks
 $medium-screen:769px;

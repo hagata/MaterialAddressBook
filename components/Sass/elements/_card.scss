@@ -37,7 +37,7 @@
 		overflow: hidden;
 	}
 	img{
-		transition: all .2s;
+		transition: $base-transition;
 		z-index: 1;
 		&:hover{
 			transform-origin: 50% 50%;
@@ -78,6 +78,7 @@
 %overScreen{
 	// display: none;
 	//
+	transition:$base-transition;
 	float: left;
 	position: absolute;
 	background: white;
@@ -88,7 +89,7 @@
 	cursor:initial;
 
 	&:hover{
-		transition: all .25s;
+		transition: $base-transition;
 		opacity: 1;
 	}
 }
@@ -101,6 +102,10 @@
 
 //this shows a different example for the first block.
 .card.dev-first{
+	transition:$base-transition;
+	&:hover{
+		@include lift5
+	}
 	&:hover>.contactDetails{display:block};
 }
 .contactDetails{
