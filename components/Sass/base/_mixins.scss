@@ -34,6 +34,21 @@
  }
 
  //buttons
+ @mixin textButton {
+	text-transform:uppercase;
+	font-weight:400;
+	font-size:$base-font-size*.75;
+	color:$primary-color;
+	letter-spacing:.1px;
+	display:block;
+	min-height:40px; //for touch target
+	cursor:pointer;
+	float:left;
+
+	&:active{
+		color:darken($primary-color,15%);
+	}
+}
 
 
  @mixin svg-button($color, $size, $iconsize, $icon-top, $icon-left){
