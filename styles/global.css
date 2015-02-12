@@ -60,7 +60,7 @@ form input {
   width: 100%;
   color: #2A4550; }
   form input:focus {
-    transition: all .2s;
+    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
     outline: none;
     border-bottom: 2px solid #48B2E8;
     padding: 0 0 0.25em;
@@ -68,61 +68,118 @@ form input {
     font-size: 1.1em;
     font-weight: 300; }
 
-header {
-  background: #2A4550;
-  padding: 1rem;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26);
-  margin-bottom: 5em;
-  position: fixed;
-  top: 0;
+header, .secondaryMenu {
+  padding: 0.5em;
   z-index: 900;
   width: 100%; }
+
+header {
+  background: #2A4550;
+  position: fixed;
+  top: 0; }
   header h1, header h2, header h2, header h4, header h5, header h6 {
     color: #fff;
-    margin: 0;
-    font-weight: 200; }
-  header .createButton {
-    width: 60px;
-    height: 60px;
-    float: right;
-    margin: 3%;
-    border-radius: 50%;
-    background: #448AFF;
-    position: absolute;
-    margin: 12px;
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26);
-    z-index: 999;
-    right: 1em;
-    top: 10px; }
-    header .createButton svg {
-      width: 33.3333333333px;
-      height: 33.3333333333px;
-      display: inline-block;
-      vertical-align: middle;
+    margin: 0.5em 0;
+    font-weight: 200;
+    float: left; }
+  header .iconSection {
+    float: right; }
+    header .iconSection svg {
+      width: 1.5em;
+      margin-right: 0.5em;
       fill: #fff;
-      position: absolute;
-      margin-left: 13.5px;
-      margin-top: 12.5px; }
-    header .createButton:active {
-      background: #116aff; }
+      cursor: pointer; }
+
+.createButton {
+  transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+  width: 60px;
+  height: 60px;
+  float: right;
+  margin: 3%;
+  border-radius: 50%;
+  background: #448AFF;
+  position: absolute;
+  margin: 12px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26);
+  z-index: 999;
+  position: fixed;
+  right: 1em;
+  top: 82px; }
+  .createButton svg {
+    width: 33.3333333333px;
+    height: 33.3333333333px;
+    display: inline-block;
+    vertical-align: middle;
+    fill: #fff;
+    position: absolute;
+    margin-left: 13.5px;
+    margin-top: 12.5px; }
+  .createButton:active {
+    background: #116aff; }
+  .createButton:hover {
+    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+    transform: scaleX(1.04) scaleY(1.04);
+    box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 50px 0 rgba(0, 0, 0, 0.19); }
+
+.secondaryMenu {
+  background: rgba(255, 255, 255, 0.8);
+  position: fixed;
+  top: 4.2em;
+  padding: 0;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26); }
+
+.filtermenu {
+  width: 100%;
+  margin: 0 auto; }
+  .filtermenu:after {
+    content: "";
+    display: table;
+    clear: both; }
+  @media screen and (min-width: 769px) {
+    .filtermenu {
+      width: 700px; } }
+  @media screen and (min-width: 1024px) {
+    .filtermenu {
+      width: 1000px; } }
+  .filtermenu span {
+    transition: border-bottom 0.1s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+    float: left;
+    padding-right: 1em;
+    min-width: 2em;
+    padding: 1em;
+    text-align: center;
+    cursor: pointer; }
+    .filtermenu span.currentFilter, .filtermenu span:hover {
+      transition: border-bottom 0.1s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+      border-bottom: 0.25em solid #48B2E8; }
 
 .search {
-  display: none;
-  background: #48B2E8;
   float: left;
   position: fixed;
   top: 0;
-  z-index: 899;
+  z-index: 999;
   border-top: 0;
   width: 100%;
-  height: 3.3em; }
-  .search svg {
-    width: 22px;
-    height: 22px;
-    fill: #fff; }
+  height: 3.3em;
+  transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+  transform-origin: 100%;
+  transform: scaleX(0); }
+  .search form {
+    margin: 1em;
+    margin-left: 25%;
+    padding-right: 5em; }
+  .search label {
+    display: none; }
   .search form input {
     float: left;
-    border: 1px solid #2A4550; }
+    outline: none;
+    border-bottom: 2px solid #48B2E8;
+    padding: 0 1em 0.25em;
+    margin: 0.25em 0 0;
+    font-size: 1.25em;
+    font-weight: 300; }
+    .search form input:focus {
+      font-size: 1.25em; }
 
 .card {
   float: left;
@@ -133,7 +190,8 @@ header {
   margin-bottom: 3.2%;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26);
   position: relative;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 5; }
   @media screen and (min-width: 769px) {
     .card {
       width: 31.26%;
@@ -143,6 +201,17 @@ header {
       width: 22.75%; } }
   .card:hover > .edit {
     display: block; }
+  .card .image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+  .card img {
+    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+    z-index: 1; }
+    .card img:hover {
+      transform-origin: 50% 50%;
+      transform: scaleX(1.0125) scaleY(1.0125);
+      opacity: .9; }
   .card .contactInfo {
     float: left;
     width: 100%;
@@ -166,6 +235,7 @@ header {
       letter-spacing: .5px; }
 
 .contactDetails, .edit {
+  transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
   float: left;
   position: absolute;
   background: white;
@@ -175,7 +245,7 @@ header {
   padding: 16px;
   cursor: initial; }
   .contactDetails:hover, .edit:hover {
-    transition: all .25s;
+    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
     opacity: 1; }
 
 .contactDetails svg, .edit .customImageUpload svg {
@@ -183,8 +253,14 @@ header {
   vertical-align: middle;
   margin-right: 0.5em; }
 
-.card.dev-first:hover > .contactDetails {
-  display: block; }
+.card.dev-first {
+  transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98); }
+  .card.dev-first:hover {
+    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+    transform: scaleX(1.05) scaleY(1.05);
+    box-shadow: 0 13px 14px 0 rgba(0, 0, 0, 0.2), 0 15px 75px 0 rgba(0, 0, 0, 0.22); }
+  .card.dev-first:hover > .contactDetails {
+    display: block; }
 
 .contactDetails {
   background: #fff; }
@@ -252,7 +328,7 @@ header {
 .cardContainer {
   width: 100%;
   margin: 0 auto;
-  margin-top: 7.5em; }
+  margin-top: 10em; }
   .cardContainer:after {
     content: "";
     display: table;
