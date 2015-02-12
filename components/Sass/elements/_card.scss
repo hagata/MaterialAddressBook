@@ -8,8 +8,10 @@
 	margin-bottom: 3.2%;
 	box-shadow:$shadow1;
 	position:relative;
+	// overflow:hidden;
 	//make them clicky
 	cursor:pointer;
+	z-index:5;
 
 //Media breaks
 
@@ -26,6 +28,23 @@
 	
 	&:hover>.edit{
 		display: block;
+	}
+
+	//image motion
+	.image{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	img{
+		transition: all .2s;
+		z-index: 1;
+		&:hover{
+			transform-origin: 50% 50%;
+			transform: scaleX(1.0125) scaleY(1.0125);
+			opacity: .9; //with a white BG, this ass a light glow/ brighten effect
+		}
+		
 	}
 
 	.contactInfo{ //initial view
