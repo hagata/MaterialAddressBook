@@ -28,6 +28,11 @@ Some mixins that I'm using that are useful for repeating Material UI elements.
 	
 	@include textButton // returns text styles for UI interactions without an icon, In a consistant color
 
+###Notable Variables
+The following variables are used throughout to keep consistant visuals
+
+	$shadow1 // used for adding the same (level1 - flat) box-shadow to elements
+	$baseline // used as a base spacer to evenly space elements on a consistant grid
 
 ##feature roadmap
 Add group lists to quickly sort through friends, business contacts, and everyone else. 
