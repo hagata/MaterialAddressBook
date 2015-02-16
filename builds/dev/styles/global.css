@@ -165,7 +165,8 @@ header {
   height: 3.3em;
   transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
   transform-origin: 100%;
-  transform: scaleX(0); }
+  transform: scaleX(0);
+  -webkit-transform: scaleX(0); }
   .search form {
     margin: 1em;
     margin-left: 25%;
@@ -333,7 +334,7 @@ header {
 .cardContainer {
   width: 100%;
   margin: 0 auto;
-  margin-top: 10em; }
+  margin-top: 12em; }
   .cardContainer:after {
     content: "";
     display: table;

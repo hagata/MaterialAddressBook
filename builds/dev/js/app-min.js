@@ -1,0 +1,1 @@
+var makeBookApp=angular.module("makeBookApp",["ngRoute"]);makeBookApp.controller("CardController",["$scope",function(o){o.name="angular is up!"}]);

@@ -2,11 +2,18 @@
 <html>
 <head>
 	<title>AddressBook</title>
+	<!-- Angular -->
+	<script src="js/lib/angular-min.js"></script>
+	<script src="js/lib/angular-route-min.js"></script>
+	<!-- App -->
+	<script src="js/app.min.js"></script>
+
+	<!-- Styles -->
 	<link rel="stylesheet" href="styles/global.css">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,300italic' rel='stylesheet' type='text/css'>
 
 </head>
-<body>
+<body ><div ng-app="makeBook">
 	<header>
 		<h2>AddressBook v.1</h2>
 		<div class="iconSection">
@@ -44,6 +51,11 @@
 
 	<section class="cardContainer">
 
+	<!-- ng-test -->
+<div ng-controller="CardController">
+	<input type="text" ng-model="name">
+	<h1>hello, {{name}}</h1>
+</div>
 <!-- ================================================
 This shows the 1st and default state interaction
 =================================================== -->
@@ -268,5 +280,7 @@ Add JS later
 			
 		</div>
 
-</body>
+
+<!-- end ng-app -->
+</div></body>
 </html>
