@@ -4,9 +4,9 @@ var makeBookApp = angular.module('makeBookApp', ['ngRoute','firebase','ngMateria
 
 makeBookApp.controller('CardController', ['$scope','$http','$firebase','$mdDialog', function($scope, $http,$firebase,$mdDialog){
 // ======= Development
-	$scope.breakout = true;
+	// $scope.breakout = true;
 	// $scope.msg='no message';
-	// $scope.name = "angular is up!";
+
 // ======= Development
 
 $scope.contacts = [];
