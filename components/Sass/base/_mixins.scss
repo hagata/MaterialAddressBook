@@ -53,14 +53,19 @@
 	font-weight:400;
 	font-size:$base-font-size*.75;
 	color:$primary-color;
+	background:none;
+	border:none;
 	letter-spacing:.1px;
 	display:block;
-	min-height:40px; //for touch target
+	min-height:48px; //for touch target
 	cursor:pointer;
 	float:left;
 
 	&:active{
 		color:darken($primary-color,15%);
+	}
+	&:focus{
+		outline: none;
 	}
 }
 

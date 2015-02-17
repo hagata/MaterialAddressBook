@@ -1,5 +1,5 @@
 .search{
-	display:none;
+	// display:none;
 	//
 	// background: $primary-color;
 	float: left;
@@ -12,8 +12,8 @@
 		
 	transition: $base-transition;
 	transform-origin: 100%;
-	transform:scaleX(0);
-	-webkit-transform:scaleX(0);
+	transform:scaleX(1);
+	-webkit-transform:scaleX(1);
 
 	
 	

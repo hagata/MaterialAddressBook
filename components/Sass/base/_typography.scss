@@ -14,7 +14,8 @@ body {
 //UI Text Interact
 // see mixins
 
-.doneConfirmButton,
-.cancelButton {
+button.doneConfirmButton,
+button.cancelButton,
+button.removeButton {
 	@include textButton;
 }
