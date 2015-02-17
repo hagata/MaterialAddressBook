@@ -1,74 +1,67 @@
 
 
-var makeBookApp = angular.module('makeBookApp', ['ngRoute']);
+var makeBookApp = angular.module('makeBookApp', ['ngRoute','firebase','ngMaterial','ngAnimate']);
 
-makeBookApp.controller('CardController', ['$scope','$http', function($scope, $http){
+makeBookApp.controller('CardController', ['$scope','$http','$firebase','$mdDialog', function($scope, $http,$firebase,$mdDialog){
 // ======= Development
-	// $scope.breakout = true;
-	$scope.msg='no message';
+	$scope.breakout = true;
+	// $scope.msg='no message';
 	// $scope.name = "angular is up!";
 // ======= Development
 
+$scope.contacts = [];
+// ===============================
+// =======	 FIREBASE 		=======
 
-// Data
-//	
+ var ref = new Firebase("https://makecontacts.firebaseio.com/contacts");
+	 var contacts = $firebase(ref);
+		$scope.contacts = contacts.$asArray();
+	
+// ===============================
+// ===============================
 
-	$scope.contacts =[];
 
-	$http.get('js/contacts.js').success(function(data){
-		//breakout data
-		$scope.rawData = data;
-		$scope.rawLength = data.contacts.length;
-		$scope.rawObj = data.contacts[0].name;
-		//
-
-		$scope.contacts = data.contacts;
-
-	});
-
-// addContact
+//addContact
 	$scope.addContact = function(){
 
-		$scope.contacts.push({
+		contacts.$push({
 			name: $scope.createname,
 			number: $scope.createnumber,
 			picture: "http://placehold.it/200x200"
 			
 		}).then(function(){
 	    		$scope.createname = ''; 
+	    		$scope.createnumber = '';
 	    	});
 
-		// $scope.showCreate = !$scope.showCreate;
 	};
+// 
+ $scope.showConfirm = function(ev,index) {
+ 	var deleteitem = index;
+    var confirm = $mdDialog.confirm()
+    
+      .title('Delete Confirmation')
+      .content('Are you Sure you want to Delete this Contact?')
+      .ariaLabel('Confirm Deletion')
+      .ok('Yes, Please!')
+      .cancel('Nooo!')
+      .targetEvent(ev);
+    $mdDialog.show(confirm).then(function() {
+	  $scope.contacts.$remove(deleteitem);
+    });
+  };
 
-// Remove/Delete contact
-	$scope.contactDelete = function(index){
-		$scope.contacts.splice(index,1);
+// 
+$scope.createShown = false;
+$scope.toggleCreate = function(){
+	$scope.createShown = !$scope.createShown;
+};
+
+$scope.searchShown = false;
+$scope.toggleSearch = function(){
+		$scope.searchShown = !$scope.searchShown;
 	};
 
 }]);
 
-makeBookApp.controller('EditController', ['$scope', function($scope){
-
-	$scope.nested="unconfirmed";
-	// Set Default Values
-	$scope.editContactName = $scope.contact.name;
-	$scope.editContactNumber = $scope.contact.number;
-	$scope.editSubmit = function(index){
-		
-
-		$scope.contacts[index] = {
-
-			name: $scope.editContactName,
-			number:$scope.editContactNumber,
-			picture:"http://placehold.it/200x200"
-		};
-
-	};
-
-	$scope.contactEditConfirm = function(){
-		$scope.nested="confirm";
-		// $scope.editShow = false;
-	};
-	
-}]);
+  

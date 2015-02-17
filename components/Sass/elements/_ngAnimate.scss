@@ -1,0 +1,89 @@
+
+
+.createNew,
+
+.contactDetails,
+.edit{
+/* After the transition this will be the only class remaining */
+	&.animate {
+	  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+	  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+	  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+	  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+	  opacity: 1; /* Default value but added for clarity */
+	}
+
+	/* Initial state when showing */
+	&.ng-hide-remove {
+	  opacity: 0;
+	  display: block !important;
+	}
+
+	/* Will transition towards this state */
+	&.ng-hide-remove.ng-hide-remove-active {
+	  opacity: 1;
+	}
+}
+
+.card{
+	&.ng-animate{
+	  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+	  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+	  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+	  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+		opacity: 1;
+		height:100%;
+		transform: scaleX(1) scaleY(1) ;
+	}
+
+	&.ng-enter-stagger {
+	  /* this will have a 100ms delay between each successive leave animation */
+	  -webkit-transition-delay: 0.05s;
+	  transition-delay: 0.05s;
+
+	  /* in case the stagger doesn't work then these two values
+	   must be set to 0 to avoid an asccidental CSS inheritance */
+	  -webkit-transition-duration: 0s;
+	  transition-duration: 0s;
+	}
+	&.ng-enter.ng-enter-active,
+	&.ng-leave{
+	  opacity: 1; /* Default value but added for clarity */
+	  height:100%;
+	  transform: scaleX(1) scaleY(1) ;
+	}
+	&.ng-leave.ng-leave-active,
+	&.ng-enter{
+	  opacity: 0; /* Default value but added for clarity */
+	  height:10%;
+	  transform: scaleX(0) scaleY(0) ;
+	}
+}
+
+// Search
+
+.search {
+	&.ng-animate{
+	  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+	  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+	  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+	  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) .2s;
+		opacity: 1;
+		height:100%;
+		transform-origin: 100%;
+		transform: scaleX(1) scaleY(1) ;
+	}
+
+	&.ng-hide.ng-hide-add,
+	&.ng-hide-remove{
+	  opacity: 1; /* Default value but added for clarity */
+	  height:100%;
+	  transform: scaleX(0) scaleY(1) ;
+	}
+	&.ng-hide.ng-hide-remove,
+	&.ng-add{
+	  opacity: 0; /* Default value but added for clarity */
+	  height:10%;
+	  transform: scaleX(0) scaleY(1) ;
+	}
+}

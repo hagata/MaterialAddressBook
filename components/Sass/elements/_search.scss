@@ -1,3 +1,10 @@
+.searchIcon{
+	&:hover >svg{
+		fill: lighten($primary-color,10%);
+		transform: scaleX(1.2) scaleY(1.2);
+	}
+}
+
 .search{
 	// display:none;
 	//
@@ -7,9 +14,9 @@
 	top: 0;
 	z-index: 999;
 	border-top: 0;
-	width: 100%;
+	width: 90%;
 	height: 3.3em;
-		
+
 	transition: $base-transition;
 	transform-origin: 100%;
 	transform:scaleX(1);
@@ -29,15 +36,39 @@
 			float: left;
 		// border:1px solid $dark-accent-color;
 		// border-radius:1em;
-		
+			color:lighten($primary-color,50%);
 			outline: none;
-			border-bottom: 2px solid $primary-color;
+			border-bottom: 3px solid $primary-color;
 			padding:0 ($baseline*2) ($baseline/2);
 			margin: ($baseline/2) 0 0;
 			font-size: $base-font-size*1.25;
 			font-weight: 300;
+			letter-spacing: .5px;
+			background:none;
 		&:focus{
 			font-size: $base-font-size*1.25;
+		}
+		&:placeholder {
+			color: lighten($dark-gray, 5%);
+			font-weight: 200;
+		}
+		&::-webkit-input-placeholder {
+		   color: lighten($dark-gray, 5%);
+		   font-weight: 200;
+		}
+
+		&:-moz-placeholder { /* Firefox 18- */
+		   color: lighten($dark-gray, 5%); 
+		   font-weight: 200; 
+		}
+
+		&::-moz-placeholder {  /* Firefox 19+ */
+		   color: lighten($dark-gray, 5%);  
+		   font-weight: 200;
+		}
+
+		&:-ms-input-placeholder {  
+		   color: lighten($dark-gray, 5%);  
 		}
 
 

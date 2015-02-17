@@ -14,7 +14,7 @@
 	z-index:5;
 
 //Media breaks
-
+	
 
 	@media screen and (min-width:$medium-screen){
 		width:31.26%;
@@ -48,6 +48,9 @@
 			// opacity: .9; //with a white BG, this ass a light glow/ brighten effect
 		}
 		
+	}
+	.frontOfCard{
+		margin-right: 0 !important; //overides nth margin bugs
 	}
 
 	.contactInfo{ //initial view
@@ -125,17 +128,19 @@
 	
 	h1{
 		font-size: 2rem;
-		color: darken($primary-color,10%);
-		font-weight: 200;
+		color: darken($primary-color,4%);
+		font-weight: 300;
 		margin-top:0;
+		line-height: 1;
 	}
 
 	svg{
+		@include size(18px);
 		@extend %iconsize;
 	}
 
 	.info{
-		padding-bottom:1em;
+		padding-bottom:$baseline;
 		@include default-border-bottom;		
 	}
 	.removeButton{
@@ -194,6 +199,11 @@
 	position:absolute;
 	bottom: 0;
 	right: 0;
+
+	&:hover{
+		@include lift3;
+	}
+	
 
 }
 
