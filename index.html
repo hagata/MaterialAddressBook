@@ -12,6 +12,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angular_material/0.7.1/angular-material.min.js"></script>
 	<!-- App -->
 	<script src="js/app-min.js"></script>
+	<script src="js/directives-min.js"></script>
+
 	<!-- Firebase -->
 	<script src="https://cdn.firebase.com/js/client/2.1.2/firebase.js"></script>
 	<!-- AngularFire -->
@@ -39,10 +41,6 @@
 		</div>
 	</header>
 	
-
-
-
-
 	<nav class="secondaryMenu">
 		<div class="filtermenu">
 			<span class="currentFilter">All</span>
@@ -58,12 +56,17 @@
 		</span> -->
 		<form action="#">
 			<label for="SearchField" aria-hidden=true>Search Field</label>
-			<input id="SearchField" type="text" placeholder="Search for contacts" autofocus
+			<input id="SearchField" type="text" placeholder="Search for contacts"
+				focus-me="focusInput"
 				ng-model="contactSearch">
 		</form>
 	</div>
-
 <section class="cardContainer" >
+
+<!-- If server Error -->
+<section ng-include="'views/dataError.html'"
+ng-show="dataError"></section>
+
 <!-- The FAB -->
 	<span class="createButton" alt="Edit" 
 	ng-click="toggleCreate(); contactSearch = '';"
@@ -123,8 +126,9 @@ ng-animate=" 'animate' "
 ============================================ -->
 
 
-<div class="card " ng-repeat="(contactIndex, contact) in contacts | filter: contactSearch | orderBy: name"
-ng-animate=" 'animate' ">
+<div class="card " ng-repeat="(contactIndex, contact) in contacts | filter: contactSearch | orderBy: 'name'"
+ng-animate=" 'animate' "
+ng-hide="dataError">
 
 <!-- Reveal Edit Module, [[::Stage 3::]] -->
 	<!-- On click of edit button -->
