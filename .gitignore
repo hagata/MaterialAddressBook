@@ -3,3 +3,5 @@ builds/**/images/*
 package.json
 config.codekit
 readme.html
+node_modules/
+components/js/bower_components/**

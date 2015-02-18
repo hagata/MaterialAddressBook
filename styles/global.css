@@ -6,6 +6,9 @@ img {
   display: inline-block;
   vertical-align: bottom; }
 
+*:focus {
+  outline: none; }
+
 body {
   margin: 0;
   padding: 0;
@@ -29,20 +32,28 @@ h1, h2, h2, h4, h5, h6 {
   font-weight: 300;
   line-height: .8; }
 
-.doneConfirmButton,
-.cancelButton {
+button.doneConfirmButton,
+button.cancelButton,
+button.removeButton {
   text-transform: uppercase;
   font-weight: 400;
   font-size: 0.75em;
   color: #48B2E8;
+  background: none;
+  border: none;
   letter-spacing: .1px;
   display: block;
-  min-height: 40px;
+  min-height: 48px;
   cursor: pointer;
   float: left; }
-  .doneConfirmButton:active,
-  .cancelButton:active {
+  button.doneConfirmButton:active,
+  button.cancelButton:active,
+  button.removeButton:active {
     color: #198eca; }
+  button.doneConfirmButton:focus,
+  button.cancelButton:focus,
+  button.removeButton:focus {
+    outline: none; }
 
 form label {
   font-size: 0.7em;
@@ -58,9 +69,10 @@ form input {
   border: 0 none;
   border-bottom: 1px solid #727272;
   width: 100%;
-  color: #2A4550; }
+  color: #b9d0da; }
   form input:focus {
     transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+    color: #2A4550;
     outline: none;
     border-bottom: 2px solid #48B2E8;
     padding: 0 0 0.25em;
@@ -83,7 +95,9 @@ header {
     font-weight: 200;
     float: left; }
   header .iconSection {
-    float: right; }
+    position: absolute;
+    right: 0;
+    z-index: 1200; }
     header .iconSection svg {
       width: 1.5em;
       margin-right: 0.5em;
@@ -119,12 +133,15 @@ header {
   .createButton:hover {
     transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
     transform: scaleX(1.04) scaleY(1.04);
+    -webkit-transform: scaleX(1.04) scaleY(1.04);
     box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 50px 0 rgba(0, 0, 0, 0.19); }
+  .createButton:focus {
+    outline: none; }
 
 .secondaryMenu {
   background: rgba(255, 255, 255, 0.8);
   position: fixed;
-  top: 4.2em;
+  top: 3.7em;
   padding: 0;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26); }
 
@@ -153,17 +170,22 @@ header {
       transition: border-bottom 0.1s cubic-bezier(0.06, 0.55, 0.9, 0.98);
       border-bottom: 0.25em solid #48B2E8; }
 
+.searchIcon:hover > svg {
+  fill: #75c5ee;
+  transform: scaleX(1.2) scaleY(1.2); }
+
 .search {
   float: left;
   position: fixed;
   top: 0;
   z-index: 999;
   border-top: 0;
-  width: 100%;
+  width: 90%;
   height: 3.3em;
   transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
   transform-origin: 100%;
-  transform: scaleX(0); }
+  transform: scaleX(1);
+  -webkit-transform: scaleX(1); }
   .search form {
     margin: 1em;
     margin-left: 25%;
@@ -172,14 +194,124 @@ header {
     display: none; }
   .search form input {
     float: left;
+    color: white;
     outline: none;
-    border-bottom: 2px solid #48B2E8;
+    border-bottom: 3px solid #48B2E8;
     padding: 0 1em 0.25em;
     margin: 0.25em 0 0;
     font-size: 1.25em;
-    font-weight: 300; }
+    font-weight: 300;
+    letter-spacing: .5px;
+    background: none; }
     .search form input:focus {
       font-size: 1.25em; }
+    .search form input:placeholder {
+      color: #7f7f7f;
+      font-weight: 200; }
+    .search form input::-webkit-input-placeholder {
+      color: #7f7f7f;
+      font-weight: 200; }
+    .search form input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #7f7f7f;
+      font-weight: 200; }
+    .search form input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #7f7f7f;
+      font-weight: 200; }
+    .search form input:-ms-input-placeholder {
+      color: #7f7f7f; }
+
+.md-button {
+  user-select: none;
+  position: relative;
+  outline: none;
+  border: 0;
+  padding: 6px;
+  margin: 0;
+  background: transparent;
+  white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: inherit;
+  font-variant: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .md-button:focus {
+    outline: none; }
+  .md-button:hover {
+    text-decoration: none; }
+  .md-button.ng-hide {
+    transition: none; }
+  .md-button.md-cornered {
+    border-radius: 0; }
+  .md-button.md-icon {
+    padding: 0;
+    background: none; }
+
+.md-button-group {
+  display: flex;
+  flex: 1;
+  width: 100%; }
+
+.md-button-group > .md-button {
+  flex: 1;
+  display: block;
+  overflow: hidden;
+  width: 0;
+  border-width: 1px 0px 1px 1px;
+  border-radius: 0;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+  .md-button-group > .md-button:first-child {
+    border-radius: 2px 0px 0px 2px; }
+  .md-button-group > .md-button:last-child {
+    border-right-width: 1px;
+    border-radius: 0px 2px 2px 0px; }
+
+/*
+ * A container inside of a rippling element (eg a button),
+ * which contains all of the individual ripples
+ */
+.md-ripple-container {
+  pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.55s cubic-bezier(0.25, 0.8, 0.25, 1); }
+
+.md-ripple {
+  position: absolute;
+  transform: scale(0);
+  transform-origin: 50% 50%;
+  opacity: 0;
+  border-radius: 50%; }
+  .md-ripple.md-ripple-placed {
+    transition: left 0.9s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.9s cubic-bezier(0.25, 0.8, 0.25, 1), margin 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), border 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), height 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .md-ripple.md-ripple-scaled {
+    transform: scale(1); }
+  .md-ripple.md-ripple-active, .md-ripple.md-ripple-full, .md-ripple.md-ripple-visible {
+    opacity: 0.20; }
+
+md-tab > .md-ripple-container .md-ripple {
+  box-sizing: content-box;
+  background-color: transparent !important;
+  border-width: 0;
+  border-style: solid;
+  opacity: 0.20;
+  transform: none !important; }
+  md-tab > .md-ripple-container .md-ripple.md-ripple-active, md-tab > .md-ripple-container .md-ripple.md-ripple-full, md-tab > .md-ripple-container .md-ripple.md-ripple-visible {
+    opacity: 0.20; }
 
 .card {
   float: left;
@@ -199,19 +331,14 @@ header {
   @media screen and (min-width: 1024px) {
     .card {
       width: 22.75%; } }
-  .card:hover > .edit {
-    display: block; }
   .card .image {
     width: 100%;
     height: 100%;
     overflow: hidden; }
   .card img {
-    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
     z-index: 1; }
-    .card img:hover {
-      transform-origin: 50% 50%;
-      transform: scaleX(1.0125) scaleY(1.0125);
-      opacity: .9; }
+  .card .frontOfCard {
+    margin-right: 0 !important; }
   .card .contactInfo {
     float: left;
     width: 100%;
@@ -241,37 +368,47 @@ header {
   background: white;
   width: 100%;
   height: 100%;
-  opacity: 0;
   padding: 16px;
   cursor: initial; }
-  .contactDetails:hover, .edit:hover {
-    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
-    opacity: 1; }
 
 .contactDetails svg, .edit .customImageUpload svg {
   width: 1.5em;
   vertical-align: middle;
   margin-right: 0.5em; }
 
-.card.dev-first {
+.edit.hidden,
+.contactDetails.hidden {
+  display: none; }
+
+.card {
   transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98); }
-  .card.dev-first:hover {
+  .card:hover {
     transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
     transform: scaleX(1.05) scaleY(1.05);
+    -webkit-transform: scaleX(1.05) scaleY(1.05);
     box-shadow: 0 13px 14px 0 rgba(0, 0, 0, 0.2), 0 15px 75px 0 rgba(0, 0, 0, 0.22); }
-  .card.dev-first:hover > .contactDetails {
-    display: block; }
 
 .contactDetails {
+  position: absolute;
+  opacity: 1;
   background: #fff; }
   .contactDetails h1 {
     font-size: 2rem;
-    color: #1c9ee1;
-    font-weight: 200;
-    margin-top: 0; }
+    color: #36aae6;
+    font-weight: 300;
+    margin-top: 0;
+    line-height: 1; }
+  .contactDetails svg {
+    width: 18px;
+    height: 18px; }
   .contactDetails .info {
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     border-bottom: 1px solid #727272; }
+  .contactDetails .removeButton {
+    position: absolute;
+    bottom: 0.5em;
+    color: #B6B6B6;
+    left: 0.5em; }
 
 .edit .doneConfirmButton,
 .edit .cancelButton {
@@ -324,11 +461,16 @@ header {
     margin-top: 7px; }
   .editButton:active {
     background: #116aff; }
+  .editButton:hover {
+    transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+    transform: scaleX(1.04) scaleY(1.04);
+    -webkit-transform: scaleX(1.04) scaleY(1.04);
+    box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 50px 0 rgba(0, 0, 0, 0.19); }
 
 .cardContainer {
   width: 100%;
   margin: 0 auto;
-  margin-top: 10em; }
+  margin-top: 12em; }
   .cardContainer:after {
     content: "";
     display: table;
@@ -379,6 +521,151 @@ header {
         content: "";
         display: table;
         clear: both; } }
+
+.createNew {
+  margin-bottom: 2.5em;
+  transition: all 0.2s cubic-bezier(0.06, 0.55, 0.9, 0.98);
+  transform: scaleX(1.04) scaleY(1.04);
+  -webkit-transform: scaleX(1.04) scaleY(1.04);
+  box-shadow: 0 9px 12px 0 rgba(0, 0, 0, 0.24), 0 15px 50px 0 rgba(0, 0, 0, 0.19);
+  width: 50vw;
+  margin: 0 auto;
+  position: fixed;
+  top: 20vh;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 2em; }
+
+.createScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1999; }
+
+.md-dialog-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 80; }
+
+md-dialog {
+  opacity: 0;
+  min-width: 240px;
+  max-width: 80%;
+  max-height: 80%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0px 27px 24px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; }
+  md-dialog.transition-in {
+    opacity: 1;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translate3d(0, 0, 0) scale(1); }
+  md-dialog.transition-out {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translate3d(0, 100%, 0) scale(0.2); }
+  md-dialog md-content {
+    order: 1;
+    padding: 24px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; }
+    md-dialog md-content:not([layout=row]) > *:first-child:not(.md-subheader) {
+      margin-top: 0px; }
+  md-dialog .md-actions {
+    display: flex;
+    order: 2;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px 16px;
+    min-height: 2.5em; }
+    md-dialog .md-actions > * {
+      margin-left: 8px; }
+  md-dialog.md-content-overflow .md-actions {
+    border-top: 1px solid; }
+
+.createNew,
+.contactDetails,
+.edit {
+  /* After the transition this will be the only class remaining */
+  /* Initial state when showing */
+  /* Will transition towards this state */ }
+  .createNew.animate,
+  .contactDetails.animate,
+  .edit.animate {
+    -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s;
+    -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s;
+    -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s;
+    transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s;
+    opacity: 1;
+    /* Default value but added for clarity */ }
+  .createNew.ng-hide-remove,
+  .contactDetails.ng-hide-remove,
+  .edit.ng-hide-remove {
+    opacity: 0;
+    display: block !important; }
+  .createNew.ng-hide-remove.ng-hide-remove-active,
+  .contactDetails.ng-hide-remove.ng-hide-remove-active,
+  .edit.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1; }
+
+.card.ng-animate {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  opacity: 1;
+  height: 100%;
+  transform: scaleX(1) scaleY(1); }
+.card.ng-enter-stagger {
+  /* this will have a 100ms delay between each successive leave animation */
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+  /* in case the stagger doesn't work then these two values
+   must be set to 0 to avoid an asccidental CSS inheritance */
+  -webkit-transition-duration: 0s;
+  transition-duration: 0s; }
+.card.ng-enter.ng-enter-active, .card.ng-leave {
+  opacity: 1;
+  /* Default value but added for clarity */
+  height: 100%;
+  transform: scaleX(1) scaleY(1); }
+.card.ng-leave.ng-leave-active, .card.ng-enter {
+  opacity: 0;
+  /* Default value but added for clarity */
+  height: 10%;
+  transform: scaleX(0) scaleY(0); }
+
+.search.ng-animate {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  opacity: 1;
+  height: 100%;
+  transform-origin: 100%;
+  transform: scaleX(1) scaleY(1); }
+.search.ng-hide.ng-hide-add, .search.ng-hide-remove {
+  opacity: 1;
+  /* Default value but added for clarity */
+  height: 100%;
+  transform: scaleX(0) scaleY(1); }
+.search.ng-hide.ng-hide-remove, .search.ng-add {
+  opacity: 0;
+  /* Default value but added for clarity */
+  height: 10%;
+  transform: scaleX(0) scaleY(1); }
 
 .loadmore {
   width: 2em;

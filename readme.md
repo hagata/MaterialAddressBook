@@ -1,18 +1,26 @@
-#Material Design address book
-This is an example of a simple CRUD address book. Build around Material design. As an experiment and challenge, no thirdpart frameworks or libraries were used. 
+#Material Design address book, v1.2
+Built on Angular. Angular lends itself greatly to this address book and is the quickest and best way to implement a CRUD addressbook. With a bunch of built in functions and animations, it was a simple choice to go with it. In this implementation,  Firebase is added as a backend to add, delete, edit contacts in realtime!
 
-*Currently no JavaScript. motion and onclick action are simulated via CSS*
+###Create 
+Make new contact cards by using the Floating Action Button (+) on the upper right. 
+The form requires both fields to create a contact. 
 
+###View/Edit/Delete
+Clicking on the a contact will open the details view, giving access to the Delete and Edit features. 
 
-#This outlines a 3 view card for each contact. 
+User **images** are from [Placehold.it](http://placehold.it) and are dynamically rendering an image with a blue/white color and the users name. 
+**uploading images have not been implemented yet**
 
-* The firt card (top left) is a static example of what each contact card looks like when viewing the contact list.
+###Search
+The Searchbar can be accessed by using the magnifying glass in the top right. 
+Searching currently works by finding any match within a contact to your search string, name or number.
 
-* The second card *currently on hover* Shows the second state of interaction, in this case it shows the contact details again, with the option to edit the information
+###Animations
+Basic animations have been added with traditional CSS and a few implementations of ngAnimate. More dynamic animations to come in the coming version. 
 
-* Here, the user is able to add basic information including twitter handle, which could be what populates the user image when one is not provided. Because really, who has their own images of their contacts?
-	The Form fields have basic interaction 
+---
 
+##Using the styles
 ###Mixins 
 Some mixins that I'm using that are useful for repeating Material UI elements.
 
@@ -35,9 +43,12 @@ The following variables are used throughout to keep consistant visuals
 	$baseline // used as a base spacer to evenly space elements on a consistant grid
 
 ##feature roadmap
-Add group lists to quickly sort through friends, business contacts, and everyone else. 
-Add a search filter to quickly type in someones name to access their information
+-Add group lists to quickly sort through friends, business contacts, and everyone else. 
 
-Add javascript to have proper interactions and motion. 
+-Add user accounts.
 
-**images from UIFaces, http://uifaces.com/**
+-~~Add a search filter to quickly type in someones name to access their information~~
+
+
+
+**~~images from UIFaces, http://uifaces.com/~~**

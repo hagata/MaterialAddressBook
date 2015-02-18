@@ -1,0 +1,23 @@
+<!-- Create -->
+<article class="createNew" ng-show="showCreate">
+	<h1>Create Here</h1>
+<!-- Form + Validation -->
+	<form 
+	name="createForm"
+	ng-submit="addContact()"
+	novalidate>
+		<label for="name">Name</label>
+		<input type="text" name="createname" placehlder="Your Name here" autofocus 
+			ng-model="createname"
+			ng-required="true">
+
+		<label for="Number">Number</label>
+		<input type="tel" name="Number" placehlder="Your Number here" 
+			ng-model="createnumber"
+			ng-required="true">
+		
+		<!-- <button ng-click="(showCreate = !showCreate)" type="button">Cancel</button> -->
+		<button type="submit" ng-disabled="createForm.$invalid">Create</button>
+
+	</form>
+</article>

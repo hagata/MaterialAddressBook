@@ -21,10 +21,11 @@ form{
 		border:0 none; //reset base styling
 		border-bottom:1px solid $dark-gray;
 		width: 100%;
-		color: $base-font-color;
+		color: lighten($base-font-color, 55%);
 
 		&:focus{
 			transition:$base-transition;
+			color:$base-font-color;
 			outline: none;
 			border-bottom: 2px solid $primary-color;
 			padding:0 0 ($baseline/2);

@@ -1,0 +1,158 @@
+.md-button {
+
+  user-select: none;
+  position: relative; //for child absolute-positioned <canvas>
+
+  outline: none;
+  border: 0;
+  padding: 6px;
+  margin: 0;
+  background: transparent;
+  white-space: nowrap;
+
+  text-align: center;
+
+  // Always uppercase buttons
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: inherit;
+  font-variant: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  text-decoration: none;
+
+  cursor: pointer;
+  overflow: hidden;   // for ink containment
+
+  transition: box-shadow $swift-ease-out-duration $swift-ease-out-timing-function,
+              background-color $swift-ease-out-duration $swift-ease-out-timing-function,
+              transform $swift-ease-out-duration $swift-ease-out-timing-function;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.ng-hide {
+    transition: none;
+  }
+;
+
+  &.md-cornered {
+    border-radius: 0;
+  }
+
+  &.md-icon {
+    padding: 0;
+    background: none;
+  }
+
+
+
+}
+
+.md-button-group {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+.md-button-group > .md-button {
+  flex: 1;
+
+  display: block;
+
+  overflow: hidden;
+
+  width: 0;
+
+  border-width: 1px 0px 1px 1px;
+  border-radius: 0;
+
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:first-child {
+    border-radius: 2px 0px 0px 2px;
+  }
+  &:last-child {
+    border-right-width: 1px;
+    border-radius: 0px 2px 2px 0px;
+  }
+}
+
+/*
+ * A container inside of a rippling element (eg a button),
+ * which contains all of the individual ripples
+ */
+.md-ripple-container {
+  pointer-events: none;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.55s $swift-ease-out-timing-function;
+}
+
+.md-ripple {
+  position: absolute;
+  transform: scale(0);
+  transform-origin: 50% 50%;
+  opacity: 0;
+  border-radius: 50%;
+  &.md-ripple-placed {
+    transition: left 0.9s $swift-ease-out-timing-function,
+                top 0.9s $swift-ease-out-timing-function,
+                margin 0.65s $swift-ease-out-timing-function,
+                border 0.65s $swift-ease-out-timing-function,
+                width 0.65s $swift-ease-out-timing-function,
+                height 0.65s $swift-ease-out-timing-function,
+                opacity 0.65s $swift-ease-out-timing-function,
+                transform 0.65s $swift-ease-out-timing-function;
+  }
+  &.md-ripple-scaled {
+    transform: scale(1);
+  }
+  &.md-ripple-active, &.md-ripple-full, &.md-ripple-visible {
+    opacity: 0.20;
+  }
+}
+
+md-tab {
+  > .md-ripple-container {
+    .md-ripple {
+      box-sizing: content-box;
+      background-color: transparent !important;
+      border-width: 0;
+      border-style: solid;
+      opacity: 0.20;
+      transform: none !important;
+      &.md-ripple-placed {}
+      &.md-ripple-scaled {}
+      &.md-ripple-active, &.md-ripple-full, &.md-ripple-visible {
+        opacity: 0.20;
+      }
+    }
+  }
+}
+
+@function map-to-string($map) {
+  $map-str: '{';
+  $keys: map-keys($map);
+  $len: length($keys);
+  @for $i from 1 through $len {
+    $key: nth($keys, $i);
+    $value: map-get($map, $key);
+    $map-str: $map-str + '_' + $key + '_: _' + map-get($map, $key) + '_';
+    @if $i != $len {
+      $map-str: $map-str + ',';
+    }
+  }
+  @return $map-str + '}';
+}
